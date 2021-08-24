@@ -1,16 +1,15 @@
-import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+  import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarComp from './components/navbar/NavbarComp';
 
-class App extends React.Component {
+function App() {
+  return (
+    <div className="App">
+      
+      <NavbarComp/>
 
-    render(){
-      return (
-        <div className="app">
-          Hello World!
-        </div>
-      )
-    }
+    </div>
+  );
 }
 
 export default App;
