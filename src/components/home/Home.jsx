@@ -1,11 +1,14 @@
-import React from 'react';
-import { Image,Dropdown,DropdownButton,Carousel,Row,Container,Col } from 'react-bootstrap';
+import React, {Component} from 'react';
+import { Carousel} from 'react-bootstrap';
 import pilar1 from '../../img/pilar-del-este-grales-7-1030x687.jpg'
 import pilar2 from '../../img/download.jpg'
 import pilar3 from '../../img/45040938498734698444837325543732318518073849369477885662934872699847302603452.jpg'
 
 
 function Home() {
+
+
+
   return (
     <div>
       Home
@@ -51,7 +54,8 @@ function Home() {
     </div>
     
   );
-}
+
+  }
 
 
 export default Home;
