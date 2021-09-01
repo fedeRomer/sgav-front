@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 import "./Login.css";
 
 
@@ -9,10 +10,6 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-
-
-  //https://serverless-stack.com/chapters/create-a-login-page.html
 
   return (
     <div className="Login">
@@ -51,36 +48,29 @@ export default function Login(props) {
     setError(null);
     setLoading(true);
 
-    const data = { username: username.value, password: password.value };
 
-   fetch('http://localhost:8080/api/login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
+    // https://github.com/cluemediator/login-app-reactjs/blob/master/src/Login.js
+
+    //TODO: pasar de fetch to axios para evitar error cors
+
+    axios.post('http://localhost:8080/api/login', 
+    { username: username, password: password },
+    {headers: {'Content-Type': 'application/json'}}
+    ).then(response => {
+      
+      if(response.status === 200){
+        alert('ok');
+      }else{
+        alert('error');
       }
-    })
-      .then((response) => response.json())
-      //Then with the data from the response in JSON...
-      .then((data) => {
-        if(!(data.status === 200)){
-          alert('error de login')
-        }else{
-          console.log('Success:', data);
-          setLoading(false);
-          props.history.push('/home');
-          alert('Inicio de sesión exitoso')
-        }
-      })
-      //Then with the error genereted...
-      .catch((error) => {
-        console.error('Error:', error);
-        setLoading(false);
-        setError(error);
-          alert(error, 'error de login');
-      });
-    
-
+      props.history.push('/home');
+    }).catch(error => {
+      if (error.response.status === 400) {
+        alert(error.response.data)}
+      else {
+        setError("Algo salió mal. Por favor, inténtelo de nuevo más tarde.")
+      };
+    });
+  }
 
   }
-}
