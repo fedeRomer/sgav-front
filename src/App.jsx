@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
-import { Navbar, NavDropdown, Form, FormControl, Button, Nav } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap'
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 import LoginForm from './components/user/login/LoginForm';
 import Dashboard from './components/user/dashboard/Dashboard';
@@ -13,6 +14,17 @@ import PublicRoute from './utils/PublicRoute';
 
 
 function App() {
+    //https://www.youtube.com/watch?v=YPgMnugXBJo
+    const readCookie = () =>{
+      const user = Cookies.get("user");
+      const status = Cookies.get("logged_in")
+      if (status){
+        alert("welcome "+user);
+      }
+    }
+    React.useEffect(() => {
+      readCookie();
+    })
 
   return (
     <Router>
@@ -46,6 +58,36 @@ function App() {
 
 );
 }
+
+
+
+function checkLoginStatus(){
+  //check si usuario esta loggeado
+  
+  //if(){
+    //si cookie es valida -> pegarle a api
+  //}else{
+    //si la cookie esta vencida, redirect a login
+  //}
+  axios.get('http://localhost:8080/api/login/checkloginstatus',
+  {withCredentials: true},
+  //{user: user},
+  {headers: {'Content-Type': 'application/json'}}
+  ).then(response => {
+
+    if(response.status === 200){
+      //logged in
+      alert('ok');
+    }else{
+      //error
+      alert('error');
+    }
+  })
+} 
+
+
+
+
 
 
 export default App;

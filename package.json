@@ -2,7 +2,7 @@
   "name": "sgav-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage" : "http://localhost:3000/home",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@popperjs/core": "^2.9.3",
@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "jquery": "^3.6.0",
+    "js-cookie": "^3.0.1",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "popper.js": "^1.16.1",

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState, useContext } from 'react';
+import {Form, Button} from "react-bootstrap";
 import axios from 'axios';
+import Cookies from 'js-cookie'
+
 import "./Login.css";
 
+import { UserContext } from '../../../utils/UserContext';
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
 
   return (
     <div className="Login">
@@ -43,6 +46,7 @@ export default function Login(props) {
     return username.length > 0 && password.length > 0;
   }
 
+
   function handleSubmit(event) {
     event.preventDefault();
     setError(null);
@@ -50,7 +54,7 @@ export default function Login(props) {
 
 
     // https://github.com/cluemediator/login-app-reactjs/blob/master/src/Login.js
-
+    // https://www.youtube.com/watch?v=lhMKvyLRWo0
     //TODO: pasar de fetch to axios para evitar error cors
 
     axios.post('http://localhost:8080/api/login', 
@@ -59,6 +63,10 @@ export default function Login(props) {
     ).then(response => {
       
       if(response.status === 200){
+        //set cookie
+        const user = Cookies.set("user",username)
+        const status = Cookies.set("logged_in","true")
+        
         alert('ok');
       }else{
         alert('error');
