@@ -63,14 +63,13 @@ function App() {
 
 function checkLoginStatus(){
   //check si usuario esta loggeado
-  
+  //TODO
   //if(){
     //si cookie es valida -> pegarle a api
   //}else{
     //si la cookie esta vencida, redirect a login
   //}
   axios.get('http://localhost:8080/api/login/checkloginstatus',
-  {withCredentials: true},
   //{user: user},
   {headers: {'Content-Type': 'application/json'}}
   ).then(response => {

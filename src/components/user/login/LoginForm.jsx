@@ -53,10 +53,6 @@ export default function Login(props) {
     setLoading(true);
 
 
-    // https://github.com/cluemediator/login-app-reactjs/blob/master/src/Login.js
-    // https://www.youtube.com/watch?v=lhMKvyLRWo0
-    //TODO: pasar de fetch to axios para evitar error cors
-
     axios.post('http://localhost:8080/api/login', 
     { username: username, password: password },
     {headers: {'Content-Type': 'application/json'}}
@@ -65,7 +61,7 @@ export default function Login(props) {
       if(response.status === 200){
         //set cookie
         const user = Cookies.set("user",username)
-        const status = Cookies.set("logged_in","true")
+        const status = Cookies.set("logged_in",true)
         
         alert('ok');
       }else{

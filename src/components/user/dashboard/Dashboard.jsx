@@ -1,18 +1,19 @@
 import React from 'react';
-import { getUser, removeUserSession } from '../../../utils/Common';
+import { removeUserCookie } from '../../../utils/Common';
+import Cookies from 'js-cookie';
  
 function Dashboard(props) {
-  const user = getUser();
-
-  // handle click event of logout button
+  
   const handleLogout = () => {
-    removeUserSession();
+    removeUserCookie();
     props.history.push('/login');
   }
 
+  const user = Cookies.get("user");
+
   return (
     <div>
-      Welcome {user.name}!<br /><br />
+      Welcome {user}!<br /><br />
       <input type="button" onClick={handleLogout} value="Logout" />
     </div>
   );
