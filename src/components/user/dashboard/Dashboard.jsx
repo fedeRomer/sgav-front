@@ -13,7 +13,7 @@ function Dashboard(props) {
 
   return (
     <div>
-      Welcome {user}!<br /><br />
+      Bienvenido {user}!<br /><br />
       <input type="button" onClick={handleLogout} value="Logout" />
     </div>
   );

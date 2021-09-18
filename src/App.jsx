@@ -19,7 +19,7 @@ function App() {
       const user = Cookies.get("user");
       const status = Cookies.get("logged_in")
       if (status){
-        alert("welcome "+user);
+        alert("Bienvenido "+user);
       }
     }
     React.useEffect(() => {
