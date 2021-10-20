@@ -69,11 +69,16 @@ export default function Login(props) {
       }
       props.history.push('/home');
     }).catch(error => {
-      if (error.response.status === 400) {
-        alert(error.response.data)}
-      else {
+      try{
+        if (error.response.status === 400) {
+          alert(error.response.data)}
+        else {
+          setError("Algo salió mal. Por favor, inténtelo de nuevo más tarde.")
+        }
+      }catch(error){
         setError("Algo salió mal. Por favor, inténtelo de nuevo más tarde.")
-      };
+      }
+     
     });
   }
 

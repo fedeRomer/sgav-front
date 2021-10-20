@@ -1,13 +1,22 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import axios from 'axios';
 import Cookies from 'js-cookie'
 
 import LoginForm from './components/user/login/LoginForm';
 import Dashboard from './components/user/dashboard/Dashboard';
 import Home from './components/home/Home';
+import MascotasPerdidas from './components/mascotasperdidas/MascotasPerdidas';
+import Chat from './components/chat/Chat';
+import Clubhouse from './components/clubhouse/Clubhouse';
+import ReportesYestadisticas from './components/reportes&estadisticas/Reportes&estadisticas';
+import NotificacionesMultas from './components/Notificaciones/NotificacionMulta';
+import NotificacioneExpensas from './components/Notificaciones/NotificacionExpensa';
+import Sos from './components/sos/Sos';
+import Propietarios from './components/informacion/Propietarios';
+import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
 
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
@@ -39,8 +48,23 @@ function App() {
               navbarScroll
             >
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
-              <Nav.Link as={Link} to="/login">Login</Nav.Link><small style={{ color: 'red' }}>(Acceso sin token)</small>
-              <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link><small style={{ color: 'red' }}>(Acceso con token unicamente)</small>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso sin token)</small> */}
+              <Nav.Link activeclassname="active" as={Link} to="/sos" big style={{ color: 'red' }}>SOS</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso con token unicamente)</small> */}
+              <Nav.Link activeclassname="active" as={Link} to="/mascotasperdidas">Mascotas Perdidas</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/chat">Chat</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/reportesyestadisticas">Reportes y Estadisticas</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/clubhouse">Clubhouse</Nav.Link>
+              <NavDropdown title="Notificaciones" id="navbarScrollingDropdown">
+              <Nav.Link activeclassname="active" as={Link} to="/notificacionmulta" small style={{ color: 'black' }}>Notificaciones Multas</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/notificacionexpensa" small style={{ color: 'black' }}>Notificaciones Expensas</Nav.Link>
+              </NavDropdown>
+              <NavDropdown title="Información (Seguridad)"  id="navbarScrollingDropdown"> 
+              <Nav.Link activeclassname="active" as={Link} to="/propietarios" small style={{ color: 'black' }}>Propietarios</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/unidadesfuncionales" small style={{ color: 'black' }}>Unidades Funcionales</Nav.Link>
+              </NavDropdown>
+              
+              
 
             </Nav>
           </Navbar.Collapse>
@@ -51,6 +75,17 @@ function App() {
           <Route exact path="/home" component={Home} />
           <PublicRoute path="/login" component={LoginForm} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/mascotasperdidas" component={MascotasPerdidas} />
+          <PrivateRoute path="/chat" component={Chat} />
+          <PrivateRoute path="/clubhouse" component={Clubhouse} />
+          <PrivateRoute path="/reportesyestadisticas" component={ReportesYestadisticas} />
+          <PrivateRoute path="/notificacionmulta" component={NotificacionesMultas} />
+          <PrivateRoute path="/notificacionexpensa" component={NotificacioneExpensas} />
+
+          <PrivateRoute path="/propietarios" component={Propietarios} />
+          <PrivateRoute path="/unidadesfuncionales" component={Unidades_Funcionales} />
+          
+          <PrivateRoute path="/SOS" component={Sos} />
         </Switch>
       </div>
 
