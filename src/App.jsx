@@ -17,6 +17,7 @@ import NotificacioneExpensas from './components/Notificaciones/NotificacionExpen
 import Sos from './components/sos/Sos';
 import Propietarios from './components/informacion/Propietarios';
 import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
+import Visitas from './components/visitas/Visitas';
 
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
@@ -50,6 +51,7 @@ function App() {
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
               <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso sin token)</small> */}
               <Nav.Link activeclassname="active" as={Link} to="/sos" big style={{ color: 'red' }}>SOS</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/visitas">Visitas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso con token unicamente)</small> */}
               <Nav.Link activeclassname="active" as={Link} to="/mascotasperdidas">Mascotas Perdidas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/chat">Chat</Nav.Link>
@@ -75,6 +77,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <PublicRoute path="/login" component={LoginForm} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/visitas" component={Visitas} />
           <PrivateRoute path="/mascotasperdidas" component={MascotasPerdidas} />
           <PrivateRoute path="/chat" component={Chat} />
           <PrivateRoute path="/clubhouse" component={Clubhouse} />
