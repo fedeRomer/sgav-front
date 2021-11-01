@@ -9,13 +9,36 @@ import MaterialTable from "material-table";
 
     useEffect(() => {
       fetch("http://localhost:8080/api/propietario/getall")
-        .then(response => response.json())
-        .then(response => {
-          console.log(response);
-          setData(response)
-        })
-    }, [])
+      .then(response => {
+        if(!response.ok){
+          alert('error')
+        }else{
+          return response.json()
+        }
+      })
+      .then(response => {
+        console.log(response)
+        setData(response)
+      })
+  }, [])
   
+  function refreshTable() {
+
+    fetch("http://localhost:8080/api/propietario/getall")
+      .then(response => {
+        if(!response.ok){
+          alert('error')
+        }else{
+          return response.json()
+        }
+      })
+      .then(response => {
+        console.log(response)
+        setData(response)
+      })
+
+  
+}
 
 
     const [data, setData] = useState([])
@@ -42,7 +65,14 @@ import MaterialTable from "material-table";
                 },
                 body:JSON.stringify(newRow)
               }).then(response=>response.json())
-              .then(response=>console.log(response))
+              .then(response=>{
+                alert(response.response)
+                console.log(response)
+                refreshTable()
+              }).catch((error) =>{
+                alert('Error no controlado')
+                console.log(error);
+              })
               resolve()
             }, 500)}),
             onRowDelete: selectedRow => new Promise((resolve, reject) => {
@@ -55,9 +85,15 @@ import MaterialTable from "material-table";
                   },
                   body:JSON.stringify(selectedRow)
                 }).then(response=>response.json())
-                .then(response=>console.log(response))
+                .then(response=>{
+                  alert(response.response)
+                  console.log(response)
+                  refreshTable()
+                }).catch((error) =>{
+                  alert('Error no controlado')
+                  console.log(error);
+                })
                 resolve()
-
               }, 500)
             }),
             onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
@@ -74,11 +110,14 @@ import MaterialTable from "material-table";
                   },
                   body:JSON.stringify(updatedRow)
                 }).then(response=>response.json())
-                .then(response=>console.log(response))
-                resolve()
-
-
-                setData(updatedRows)
+                .then(response=>{
+                  alert(response.response)
+                  console.log(response)
+                  refreshTable()
+                }).catch((error) =>{
+                  alert('Error no controlado')
+                  console.log(error);
+                })
                 resolve()
               }, 500)
             })
@@ -106,9 +145,9 @@ import MaterialTable from "material-table";
                 actions: 'Acciones'
             },
             body: {
-                emptyDataSourceMessage: 'No records to display',
+                emptyDataSourceMessage: 'No hay registros para mostrar',
                 filterRow: {
-                    filterTooltip: 'Filter'
+                    filterTooltip: 'Filtrar'
                 },
                 editRow: {
                     deleteText: '¿Está seguro de eliminar este registro?'  

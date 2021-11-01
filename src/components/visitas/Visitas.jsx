@@ -10,14 +10,37 @@ export default function Visitas(){
 
     useEffect(() => {
         fetch("http://localhost:8080/api/visitante/getall")
-          .then(response => response.json())
-          .then(response => {
-            console.log(response);
-            setData(response)
-          })
-      }, [])
+        .then(response => {
+          if(!response.ok){
+            alert('error')
+          }else{
+            return response.json()
+          }
+        })
+        .then(response => {
+          console.log(response)
+          setData(response)
+        })
+    }, [])
     
-  
+    function refreshTable() {
+
+      fetch("http://localhost:8080/api/visitante/getall")
+        .then(response => {
+          if(!response.ok){
+            alert('error')
+          }else{
+            return response.json()
+          }
+        })
+        .then(response => {
+          console.log(response)
+          setData(response)
+        })
+
+    
+  }
+
   
       const [data, setData] = useState([])
       const columns = [
@@ -26,8 +49,8 @@ export default function Visitas(){
         { title: "Apellido", field: "apellido",initialEditValue:'', validate: rowData => rowData.apellido === '' ? { isValid: false, helperText: 'apellido no puede ser vacio' } : true,},
         { title: "Fecha de entrada", field: 'fechaEntrada',type:'datetime',validate: rowData => rowData.fechaEntrada > new Date(),filterComponent: (props) => <CustomDatePicker {...props} /> },
         { title: "Fecha de salida", field: "fechaSalida",type:'datetime',validate: rowData => rowData.fechaSalida > rowData.fechaEntrada,filterComponent: (props) => <CustomDatePicker {...props} /> },
-        { title: "DNI", field: 'dni',type: "numeric", validate: rowData => rowData.dni > 0 },
-        { title: "UF ID", field: 'unidadFuncionalId', validate: rowData => rowData.unidadFuncionalId > 0  },
+        { title: "DNI", field: 'dni',type: "numeric",initialEditValue: 0, validate: rowData => rowData.dni.length < 6 ? { isValid: false, helperText: 'DNI 9 digitos' } : true,},
+        { title: "UF ID", field: 'unidadFuncionalId',type:'numeric', validate: rowData => rowData.unidadFuncionalId > 0  },
         { title: "Tipo", field: 'tipo' },
         { title: "Vehiculo ID", field: 'vehiculoId',type: "numeric"},
         { title: "Foto", field: 'foto' }
@@ -50,7 +73,14 @@ export default function Visitas(){
                   },
                   body:JSON.stringify(newRow)
                 }).then(response=>response.json())
-                .then(response=>console.log(response))
+                .then(response=>{
+                  alert(response.response)
+                  console.log(response)
+                  refreshTable()
+                }).catch((error) =>{
+                  alert('Error no controlado')
+                  console.log(error);
+                })
                 resolve()
               }, 500)}),
               onRowDelete: selectedRow => new Promise((resolve, reject) => {
@@ -63,9 +93,15 @@ export default function Visitas(){
                     },
                     body:JSON.stringify(selectedRow)
                   }).then(response=>response.json())
-                  .then(response=>console.log(response))
+                  .then(response=>{
+                    alert(response.response)
+                    console.log(response)
+                    refreshTable()
+                  }).catch((error) =>{
+                    alert('Error no controlado')
+                    console.log(error);
+                  })
                   resolve()
-  
                 }, 500)
               }),
               onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
@@ -82,11 +118,14 @@ export default function Visitas(){
                     },
                     body:JSON.stringify(updatedRow)
                   }).then(response=>response.json())
-                  .then(response=>console.log(response))
-                  resolve()
-  
-  
-                  setData(updatedRows)
+                  .then(response=>{
+                    alert(response.response)
+                    console.log(response)
+                    refreshTable()
+                  }).catch((error) =>{
+                    alert('Error no controlado')
+                    console.log(error);
+                  })
                   resolve()
                 }, 500)
               })
@@ -114,9 +153,9 @@ export default function Visitas(){
                   actions: 'Acciones'
               },
               body: {
-                  emptyDataSourceMessage: 'No records to display',
+                  emptyDataSourceMessage: 'No hay registros para mostrar',
                   filterRow: {
-                      filterTooltip: 'Filter'
+                      filterTooltip: 'Filtrar'
                   },
                   editRow: {
                       deleteText: '¿Está seguro de eliminar este registro?'  

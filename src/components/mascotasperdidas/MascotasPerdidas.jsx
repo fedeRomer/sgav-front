@@ -43,12 +43,18 @@ function MascotasPerdidas(){
 
   useEffect(() => {
     fetch("http://localhost:8080/api/mascotasperdidas/getall")
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        setListMascotas(response)
-      })
-  }, [])
+    .then(response => {
+      if(!response.ok){
+        alert('error')
+      }else{
+        return response.json()
+      }
+    })
+    .then(response => {
+      console.log(response)
+      setListMascotas(response)
+    })
+}, [])
   
 
   return (
