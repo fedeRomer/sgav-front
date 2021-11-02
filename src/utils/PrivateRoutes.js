@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
-import { getCookie, getUserType,checkAccess} from './Common';
-import Cookies from 'js-cookie'
+import { Route, Redirect } from 'react-router-dom';
+import {  getUserType} from './Common';
 
+//private route con api para privilegios
 export default class PrivateRoutes extends Component {
     constructor(props) {
         super(props)

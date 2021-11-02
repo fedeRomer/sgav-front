@@ -18,6 +18,7 @@ import Sos from './components/sos/Sos';
 import Propietarios from './components/informacion/Propietarios';
 import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
 import Visitas from './components/visitas/Visitas';
+import SupportEngine from './components/chat/SupportEngine'
 import Cookie from './utils/Common';
 import { getCookie, checkAccess, test } from './utils/Common';
 
@@ -27,7 +28,9 @@ import PublicRoute from './utils/PublicRoute';
 
 
 function App() {
-    //https://www.youtube.com/watch?v=YPgMnugXBJo
+
+    const path = window.location.pathname
+
     const readCookie = () =>{
       const user = Cookies.get("user");
       const status = Cookies.get("logged_in")
@@ -40,6 +43,8 @@ function App() {
     })
 
   return (
+   
+    
     <Router>
       <div>
         <Navbar bg="dark" variant={"dark"} expand="lg">
@@ -94,6 +99,12 @@ function App() {
         </Switch>
         
       </div>
+
+    <div>
+
+    <SupportEngine/>
+
+    </div>
     </Router>
 
 );
@@ -102,13 +113,6 @@ function App() {
 
 
 function checkLoginStatus(){
-  //check si usuario esta loggeado
-  //TODO
-  //if(){
-    //si cookie es valida -> pegarle a api
-  //}else{
-    //si la cookie esta vencida, redirect a login
-  //}
   axios.get('http://localhost:8080/api/login/checkloginstatus',
   //{user: user},
   {headers: {'Content-Type': 'application/json'}}

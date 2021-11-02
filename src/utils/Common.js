@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie'
 import axios from 'axios';
-import { useState } from 'react';
 
 // return the user data from the session storage
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { getCookie} from './Common';
-import Cookies from 'js-cookie'
+
 
 // handle the private routes
+// discontinuado
 function PrivateRoute({ component: Component, ...rest }) {
 
   return (

@@ -11,8 +11,7 @@ function Home() {
 
   return (
     <div>
-      Home
-
+{/* 
 <Carousel>
   <Carousel.Item>
     <img
@@ -50,7 +49,7 @@ function Home() {
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
-
+ */}
     </div>
     
   );
