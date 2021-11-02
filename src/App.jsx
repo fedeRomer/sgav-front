@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import axios from 'axios';
 import Cookies from 'js-cookie'
@@ -18,8 +18,11 @@ import Sos from './components/sos/Sos';
 import Propietarios from './components/informacion/Propietarios';
 import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
 import Visitas from './components/visitas/Visitas';
+import Cookie from './utils/Common';
+import { getCookie, checkAccess, test } from './utils/Common';
 
 import PrivateRoute from './utils/PrivateRoute';
+import PrivateRoutes from './utils/PrivateRoutes';
 import PublicRoute from './utils/PublicRoute';
 
 
@@ -74,24 +77,23 @@ function App() {
       </div>
       <div>
         <Switch>
-          <Route exact path="/home" component={Home} />
+          <Route path="/" exact> <Redirect to="/home" /> </Route>
+          <Route path="/home" exact component={Home} />
           <PublicRoute path="/login" component={LoginForm} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/visitas" component={Visitas} />
-          <PrivateRoute path="/mascotasperdidas" component={MascotasPerdidas} />
-          <PrivateRoute path="/chat" component={Chat} />
-          <PrivateRoute path="/clubhouse" component={Clubhouse} />
-          <PrivateRoute path="/reportesyestadisticas" component={ReportesYestadisticas} />
-          <PrivateRoute path="/notificacionmulta" component={NotificacionesMultas} />
-          <PrivateRoute path="/notificacionexpensa" component={NotificacioneExpensas} />
-
-          <PrivateRoute path="/propietarios" component={Propietarios} />
-          <PrivateRoute path="/unidadesfuncionales" component={Unidades_Funcionales} />
-          
-          <PrivateRoute path="/SOS" component={Sos} />
+          <PrivateRoutes path="/dashboard" component={Dashboard}/>
+          <PrivateRoutes path="/visitas" component={Visitas} />
+          <PrivateRoutes path="/mascotasperdidas" component={MascotasPerdidas} />
+          <PrivateRoutes path="/chat" component={Chat} />
+          <PrivateRoutes path="/clubhouse" component={Clubhouse} />
+          <PrivateRoutes path="/reportesyestadisticas" component={ReportesYestadisticas} />
+          <PrivateRoutes path="/notificacionmulta" component={NotificacionesMultas} />
+          <PrivateRoutes path="/notificacionexpensa" component={NotificacioneExpensas} />
+          <PrivateRoutes path="/propietarios" component={Propietarios} />
+          <PrivateRoutes path="/unidadesfuncionales" component={Unidades_Funcionales} />
+          <PrivateRoutes path="/SOS" component={Sos} />
         </Switch>
+        
       </div>
-
     </Router>
 
 );

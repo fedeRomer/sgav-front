@@ -1,9 +1,11 @@
 import Cookies from 'js-cookie'
 import axios from 'axios';
+import { useState } from 'react';
 
 // return the user data from the session storage
 
 //https://github.com/js-cookie/js-cookie/
+
 
 export const getUser = () => {
   const user = Cookies.get("user");
@@ -19,8 +21,45 @@ export const getToken = () => {
   return sessionStorage.getItem('token') || null;
 }
 
+export const getUserType = () => {
+  return Cookies.get("rol")
+}
+
+
+export const checkAccess = (path) =>{
+
+  var checkAccessObj = new Object();
+  checkAccessObj.typeOfUser = Cookies.get("rol");
+  checkAccessObj.moduleToAccess = path;
+
+
+  fetch("http://localhost:8080/api/usuario/checkaccess",{
+      method:"POST",
+      headers:{
+        'Content-type':"application/json"
+      },
+      body: JSON.stringify(checkAccessObj)
+  }).then(response => {
+
+      if(response.ok){
+          return true;
+
+      }else{
+          var respuesta = response.json()
+          alert(respuesta.response);
+          return false;
+      }
+  }).catch((error) =>{
+      alert('Error no controlado')
+      console.log(error);
+      return false;
+  })
+}
+
+
 //return true if cookie is valid
-export const getCookie = () => {
+export const getCookie = (props) => {
+
   const user = Cookies.get("user");
   const status = Cookies.get("logged_in")
   if (status && user) {

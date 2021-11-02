@@ -62,6 +62,19 @@ export default function Login(props) {
         //set cookie
         const user = Cookies.set("user",username)
         const status = Cookies.set("logged_in",true)
+
+        if(response.data.usuarioId.rolId === 1){
+          Cookies.set("rol", "propietario")
+        }
+        if(response.data.usuarioId.rolId === 2){
+          Cookies.set("rol", "administracion")
+        }
+        if(response.data.usuarioId.rolId === 3){
+          Cookies.set("rol", "guardia")
+        }
+        if(response.data.usuarioId.rolId === 4){
+          Cookies.set("rol", "clubhouse")
+        }
         
         alert('ok');
       }else{
