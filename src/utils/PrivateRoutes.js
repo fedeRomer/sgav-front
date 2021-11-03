@@ -49,7 +49,7 @@ export default class PrivateRoutes extends Component {
     render() {
         const Component = this.props.component
         if (this.state.isLoading === true) {
-            return (<div>Loading</div>)
+            return (<div>Cargando...</div>)
         }
         return(
             <Route render={(props) => this.state.hasAccess && !this.state.isLoading ? (<Component {...this.props}/>) : (<Redirect to ='/login' />)} />

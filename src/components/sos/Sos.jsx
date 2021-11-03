@@ -1,12 +1,17 @@
 import React from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie'
 
-function Sos(){
-    return (
-        <div>
-          ---- Sos ----
-        </div>
-      );
+
+function Sos() {
+  return (
+
+
+    <div>
+      ---- Sos ----
+
+          {/* onClick={() => {
+            console.log("callback function here"); */}
+
+    </div>
+  );
 }
 export default Sos;

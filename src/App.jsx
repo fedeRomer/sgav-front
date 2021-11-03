@@ -18,7 +18,6 @@ import Sos from './components/sos/Sos';
 import Propietarios from './components/informacion/Propietarios';
 import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
 import Visitas from './components/visitas/Visitas';
-import SupportEngine from './components/chat/SupportEngine'
 import Cookie from './utils/Common';
 import { getCookie, checkAccess, test } from './utils/Common';
 
@@ -28,6 +27,7 @@ import PublicRoute from './utils/PublicRoute';
 
 
 function App() {
+
 
     const path = window.location.pathname
 
@@ -58,7 +58,6 @@ function App() {
             >
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
               <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso sin token)</small> */}
-              <Nav.Link activeclassname="active" as={Link} to="/sos" big style={{ color: 'red' }}>SOS</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/visitas">Visitas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso con token unicamente)</small> */}
               <Nav.Link activeclassname="active" as={Link} to="/mascotasperdidas">Mascotas Perdidas</Nav.Link>
@@ -73,6 +72,7 @@ function App() {
               <Nav.Link activeclassname="active" as={Link} to="/propietarios" small style={{ color: 'black' }}>Propietarios</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/unidadesfuncionales" small style={{ color: 'black' }}>Unidades Funcionales</Nav.Link>
               </NavDropdown>
+              <Nav.Link activeclassname="active" as={Link} to="/sos" big style={{ color: 'red' }}>SOS</Nav.Link>
               
               
 
@@ -102,7 +102,6 @@ function App() {
 
     <div>
 
-    <SupportEngine/>
 
     </div>
     </Router>
