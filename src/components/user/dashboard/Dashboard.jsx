@@ -1,4 +1,5 @@
-import React ,{useState, useEffect, Component, forwardRef } from 'react';
+import React ,{ useState, useEffect, Component, forwardRef } from 'react';
+import {Redirect } from 'react-router-dom';
 import { removeUserCookie } from '../../../utils/Common';
 import Cookies from 'js-cookie';
 import MaterialTable from "material-table";
@@ -7,8 +8,7 @@ import CustomDatePicker from '../../customdatepicker/CustomDatePicker';
 export default function Dashboard(props) {
   
   const handleLogout = () => {
-    removeUserCookie();
-    props.history.push('/login');
+    removeUserCookie()
   }
 
   const user = Cookies.get("user");
@@ -46,8 +46,19 @@ export default function Dashboard(props) {
     { title: "ID", field: "id", editable: false },
     { title: "Nombre", field: "nombre",initialEditValue:'', validate: rowData => rowData.nombre === '' ? { isValid: false, helperText: 'nombre no puede ser vacio' } : true,},
     { title: "Apellido", field: "apellido",initialEditValue:'', validate: rowData => rowData.apellido === '' ? { isValid: false, helperText: 'apellido no puede ser vacio' } : true,},
-    { title: "Rol ID", field: 'rolId', validate: rowData => rowData.rolId > 0  },
-    { title: "Sexo", field: "sexo",initialEditValue:'', validate: rowData => rowData.sexo === '' ? { isValid: false, helperText: 'sexo no puede ser vacio' } : true,},
+    {
+      title: 'Rol',
+      field: 'rolId',
+      validate: rowData => rowData.rolId > 0,
+      lookup: { 1: 'PROPIETARIO', 2: 'ADMINISTRACIÓN', 3: 'GUARDIA', 4: 'CLUBHOUSE' },
+    },
+    {
+      title: 'Sexo',
+      field: 'sexo',
+      validate: rowData => rowData.rolId > 0,
+      lookup: { M: 'Masculino', F: 'Femenino'},
+    },
+    //{ title: "Sexo", field: "sexo",initialEditValue:'', validate: rowData => rowData.sexo === '' ? { isValid: false, helperText: 'sexo no puede ser vacio' } : true,},
     { title: "DNI", field: 'dni',type: "numeric", validate: rowData => rowData.dni > 0 },
     { title: "Telefono", field: 'telefono',type: "numeric", validate: rowData => rowData.telefono > 1000000 },
     { title: "Activado", field: 'enabled',type: "boolean" }
@@ -56,9 +67,9 @@ export default function Dashboard(props) {
 
   return (
     
-<div className="PanelUsuario">
-Bienvenido {user}!<br /><br />
-<input type="button" onClick={handleLogout} value="Logout" />
+  <div className="PanelUsuario">
+  Bienvenido {user}!<br /><br />
+  <input type="button" onClick={handleLogout} value="Logout" />
 <MaterialTable
   title="Panel de Usuario"
   data={data}
@@ -76,9 +87,10 @@ Bienvenido {user}!<br /><br />
       .then(response=>{
         alert(response.response)
         console.log(response)
+        refreshTable()
       }).catch((error) =>{
-        alert('Error no controlado')
         console.log(error);
+        refreshTable()
       })
       resolve()
     }, 500)}),
@@ -95,9 +107,10 @@ Bienvenido {user}!<br /><br />
         .then(response=>{
           alert(response.response)
           console.log(response)
+          refreshTable()
         }).catch((error) =>{
-          alert('Error no controlado')
           console.log(error);
+          refreshTable()
         })
         resolve()
       }, 500)
@@ -121,8 +134,8 @@ Bienvenido {user}!<br /><br />
           console.log(response)
           refreshTable()
         }).catch((error) =>{
-          alert('Error no controlado')
           console.log(error);
+          refreshTable()
         })
         resolve()
       }, 500)

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 import MaterialTable from "material-table";
 
   
-  export default function NotificacionMulta() {
+export default function NotificacionMulta() {
   
 
     useEffect(() => {
@@ -77,7 +77,6 @@ import MaterialTable from "material-table";
                 console.log(response)
                 refreshTable()
               }).catch((error) =>{
-                alert('Error no controlado')
                 console.log(error);
               })
               resolve()
@@ -97,7 +96,6 @@ import MaterialTable from "material-table";
                   console.log(response)
                   refreshTable()
                 }).catch((error) =>{
-                  alert('Error no controlado')
                   console.log(error);
                 })
                 resolve()
@@ -122,7 +120,6 @@ import MaterialTable from "material-table";
                   console.log(response)
                   refreshTable()
                 }).catch((error) =>{
-                  alert('Error no controlado')
                   console.log(error);
                 })
                 resolve()

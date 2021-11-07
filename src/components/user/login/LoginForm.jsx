@@ -9,11 +9,14 @@ import { UserContext } from '../../../utils/UserContext';
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
+  const [usuarioBack, setUsuarioBack] = useState(null);
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [firstname, setFirtsName] = useState("");
   const [lastname, setLastName] = useState("");
+  const [idUser, setIdUser] = useState("");
+  
 
 
   return (
@@ -92,12 +95,15 @@ export default function Login(props) {
         //set cookie
         const user = Cookies.set("user",username)
         const status = Cookies.set("logged_in",true)
-
+        setUsuarioBack(response.data);
         
+        console.log(usuarioBack);
         if(response.data.usuarioId.rolId === 1){
           Cookies.set("rol", "propietario")
           setFirtsName(response.data.usuarioId.nombre);
           setLastName(response.data.usuarioId.apellido);
+          setIdUser(response.data.usuarioId.id);
+          Cookies.set("idusuario", response.data.usuarioId.id)
           handleChatSession();
         }
         if(response.data.usuarioId.rolId === 2){

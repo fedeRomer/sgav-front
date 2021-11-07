@@ -6,12 +6,16 @@ import {  getUserType} from './Common';
 export default class PrivateRoutes extends Component {
     constructor(props) {
         super(props)
+        //TODO: traer lista de /paths autorizados y matchear?
 
+        //4 tipos de roles, cada rol tiene acceso a distintas pags
+        
         this.state = {
             hasAccess: false,
             isLoading: true
         }
         this.hasAccess = this.hasAccess.bind(this)
+        this.hasAccess()
     }
 
     componentDidMount() {
@@ -39,7 +43,9 @@ export default class PrivateRoutes extends Component {
                 this.setState({
                     hasAccess: false,
                     isLoading: false
+                    
                 })
+                
             }
         })
         .catch((err) => {
@@ -49,10 +55,16 @@ export default class PrivateRoutes extends Component {
     render() {
         const Component = this.props.component
         if (this.state.isLoading === true) {
+            
             return (<div>Cargando...</div>)
+            
         }
         return(
-            <Route render={(props) => this.state.hasAccess && !this.state.isLoading ? (<Component {...this.props}/>) : (<Redirect to ='/login' />)} />
+            <Route render={
+                (props) => this.state.hasAccess && !this.state.isLoading  ? 
+                (<Component {...this.props}/>) : (<Redirect to ='/login' />)
+            } />
+            
         )
             
     }

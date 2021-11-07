@@ -1,5 +1,8 @@
+import React, { useState, useContext } from 'react';
 import Cookies from 'js-cookie'
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button'
 
 // return the user data from the session storage
 
@@ -22,6 +25,14 @@ export const getToken = () => {
 
 export const getUserType = () => {
   return Cookies.get("rol")
+}
+
+export const checkForSosAlerts = () => {
+  if(getUserType() === 'guardia'){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 
@@ -49,7 +60,6 @@ export const checkAccess = (path) =>{
           return false;
       }
   }).catch((error) =>{
-      alert('Error no controlado')
       console.log(error);
       return false;
   })
@@ -90,7 +100,9 @@ export const removeUserCookie = () => {
       if (response.status === 200) {
         Cookies.remove("user");
         Cookies.remove("logged_in");
+        Cookies.remove("rol");
         alert('Logged out');
+        window.location.reload(true)
       }else{
         alert('Error loggin out');
       }
@@ -106,3 +118,6 @@ export const setUserSession = (token, user) => {
   //sessionStorage.setItem('token', token);
   sessionStorage.setItem('user', JSON.stringify(user));
 }
+
+
+

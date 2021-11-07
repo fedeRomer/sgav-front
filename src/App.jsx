@@ -15,13 +15,12 @@ import ReportesYestadisticas from './components/reportes&estadisticas/Reportes&e
 import NotificacionesMultas from './components/Notificaciones/NotificacionMulta';
 import NotificacioneExpensas from './components/Notificaciones/NotificacionExpensa';
 import Sos from './components/sos/Sos';
+import SosGuardia from './components/sos/SosGuardia';
 import Propietarios from './components/informacion/Propietarios';
 import Unidades_Funcionales from './components/informacion/Unidades_Funcionales';
 import Visitas from './components/visitas/Visitas';
-import Cookie from './utils/Common';
-import { getCookie, checkAccess, test } from './utils/Common';
+import RegisterNewUser from './components/user/register/RegisterNewUser';
 
-import PrivateRoute from './utils/PrivateRoute';
 import PrivateRoutes from './utils/PrivateRoutes';
 import PublicRoute from './utils/PublicRoute';
 
@@ -29,7 +28,6 @@ import PublicRoute from './utils/PublicRoute';
 function App() {
 
 
-    const path = window.location.pathname
 
     const readCookie = () =>{
       const user = Cookies.get("user");
@@ -38,6 +36,7 @@ function App() {
         alert("Bienvenido "+user);
       }
     }
+
     React.useEffect(() => {
       readCookie();
     })
@@ -60,6 +59,7 @@ function App() {
               <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso sin token)</small> */}
               <Nav.Link activeclassname="active" as={Link} to="/visitas">Visitas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso con token unicamente)</small> */}
+              <Nav.Link activeclassname="active" as={Link} to="/usuarios">Usuarios </Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/mascotasperdidas">Mascotas Perdidas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/chat">Chat</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/reportesyestadisticas">Reportes y Estadisticas</Nav.Link>
@@ -73,6 +73,7 @@ function App() {
               <Nav.Link activeclassname="active" as={Link} to="/unidadesfuncionales" small style={{ color: 'black' }}>Unidades Funcionales</Nav.Link>
               </NavDropdown>
               <Nav.Link activeclassname="active" as={Link} to="/sos" big style={{ color: 'red' }}>SOS</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/sosguardia" big style={{ color: 'red' }}>SOS Guardia</Nav.Link>
               
               
 
@@ -86,6 +87,7 @@ function App() {
           <Route path="/home" exact component={Home} />
           <PublicRoute path="/login" component={LoginForm} />
           <PrivateRoutes path="/dashboard" component={Dashboard}/>
+          <PrivateRoutes path="/usuarios" component={RegisterNewUser} />
           <PrivateRoutes path="/visitas" component={Visitas} />
           <PrivateRoutes path="/mascotasperdidas" component={MascotasPerdidas} />
           <PrivateRoutes path="/chat" component={Chat} />
@@ -96,6 +98,7 @@ function App() {
           <PrivateRoutes path="/propietarios" component={Propietarios} />
           <PrivateRoutes path="/unidadesfuncionales" component={Unidades_Funcionales} />
           <PrivateRoutes path="/SOS" component={Sos} />
+          <PrivateRoutes path="/sosguardia" component={SosGuardia} />
         </Switch>
         
       </div>
@@ -108,8 +111,6 @@ function App() {
 
 );
 }
-
-
 
 function checkLoginStatus(){
   axios.get('http://localhost:8080/api/login/checkloginstatus',
@@ -126,10 +127,5 @@ function checkLoginStatus(){
     }
   })
 } 
-
-
-
-
-
 
 export default App;

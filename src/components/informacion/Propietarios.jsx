@@ -70,7 +70,6 @@ import MaterialTable from "material-table";
                 console.log(response)
                 refreshTable()
               }).catch((error) =>{
-                alert('Error no controlado')
                 console.log(error);
               })
               resolve()
@@ -90,7 +89,6 @@ import MaterialTable from "material-table";
                   console.log(response)
                   refreshTable()
                 }).catch((error) =>{
-                  alert('Error no controlado')
                   console.log(error);
                 })
                 resolve()
@@ -115,7 +113,6 @@ import MaterialTable from "material-table";
                   console.log(response)
                   refreshTable()
                 }).catch((error) =>{
-                  alert('Error no controlado')
                   console.log(error);
                 })
                 resolve()

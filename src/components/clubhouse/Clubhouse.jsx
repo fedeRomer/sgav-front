@@ -12,7 +12,7 @@ export default function Clubhouse(){
         fetch("http://localhost:8080/api/calendarioclubhouse/getall")
         .then(response => {
           if(!response.ok){
-            alert('error')
+            //alert('error')
           }else{
             return response.json()
           }
@@ -58,6 +58,34 @@ export default function Clubhouse(){
             title="Clubhouse Visitas"
             data={data}
             columns={columns}
+            actions={[
+              {
+                icon: 'delete',
+                tooltip: 'Eliminar',
+                onClick: (event, rowData) => {
+                  console.log(rowData)
+                  if(window.confirm("¿Está seguro que quiere eliminar la visita al clubhouse?")){
+
+                    fetch('http://localhost:8080/api/calendarioclubhouse/deletecalendarioclubhouse',{
+                      method:"DELETE",
+                      headers:{
+                        'Content-type':"application/json"
+                      },
+                      body:JSON.stringify(rowData)
+                    }).then(response=>response.json())
+                    .then(response=>{
+                      alert(response.response)
+                      console.log(response)
+                      refreshTable()
+                    }).catch((error) =>{
+                      console.log(error);
+                    })
+
+                  }
+                    
+                }
+              }
+            ]}
             editable={{
               onRowAdd: (newRow) => new Promise((resolve, reject) => {
                 setTimeout(() => {
@@ -73,32 +101,10 @@ export default function Clubhouse(){
                   console.log(response)
                   refreshTable()
                 }).catch((error) =>{
-                  alert('Error no controlado')
                   console.log(error);
                 })
                 resolve()
               }, 500)}),
-              onRowDelete: selectedRow => new Promise((resolve, reject) => {
-                setTimeout(() => {
-  
-                  fetch('http://localhost:8080/api/calendarioclubhouse/deletecalendarioclubhouse',{
-                    method:"DELETE",
-                    headers:{
-                      'Content-type':"application/json"
-                    },
-                    body:JSON.stringify(selectedRow)
-                  }).then(response=>response.json())
-                  .then(response=>{
-                    alert(response.response)
-                    console.log(response)
-                    refreshTable()
-                  }).catch((error) =>{
-                    alert('Error no controlado')
-                    console.log(error);
-                  })
-                  resolve()
-                }, 500)
-              }),
               onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
                 const index=oldRow.tableData.id;
                 const updatedRows=[...data]
@@ -118,7 +124,6 @@ export default function Clubhouse(){
                     console.log(response)
                     refreshTable()
                   }).catch((error) =>{
-                    alert('Error no controlado')
                     console.log(error);
                   })
                   resolve()
