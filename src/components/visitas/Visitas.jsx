@@ -79,7 +79,13 @@ export default function Visitas(){
         { title: "Fecha de salida", field: "fechaSalida",type:'datetime',validate: rowData => rowData.fechaSalida > rowData.fechaEntrada,filterComponent: (props) => <CustomDatePicker {...props} /> },
         { title: "DNI", field: 'dni',type: "numeric",validate: rowData =>  rowData.dni > 1000000},
         { title: "UF ID", field: 'unidadFuncionalId',type:'numeric', validate: rowData => rowData.unidadFuncionalId > 0  },
-        { title: "Tipo", field: 'tipo' }
+        {
+          title: 'Tipo',
+          field: 'tipo',
+          validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'Tipo no puede ser vacio' } : true,
+          lookup: { 'Visita Domiciliaria': 'Visita Domiciliaria', 'Mantenimiento y Reparación': 'Mantenimiento y Reparación'
+          , 'Construcción': 'Construcción', 'Servicios': 'Servicios', 'Otro': 'Otro'},
+        },
         //{ title: "Foto", field: 'foto' }
       ]
 

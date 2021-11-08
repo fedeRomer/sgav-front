@@ -1,12 +1,6 @@
-import React, { useState, useEffect, Component } from "react";
-import { styles } from './styles'
-import Button from 'react-bootstrap/Button'
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import Icon from '@mui/material/Icon';
 
-import { getUser, getUserType } from "../../utils/Common";
-
-import Modal from 'react-bootstrap/Modal'
 
 
 export default function SosDatatable() {

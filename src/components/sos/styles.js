@@ -1,5 +1,5 @@
-import React from "react";
-import { getUserType } from "../../utils/Common";
+// import React from "react";
+// import { getUserType } from "../../utils/Common";
 
 export const styles = {
 

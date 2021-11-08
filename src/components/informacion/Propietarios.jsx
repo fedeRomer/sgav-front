@@ -1,7 +1,4 @@
-import React, {useState, useEffect, Component, forwardRef } from "react";
-import ReactDOM from "react-dom";
-import axios from 'axios';
-import Cookies from 'js-cookie'
+import React, {useState, useEffect} from "react";
 import MaterialTable from "material-table";
 
   export default function Propietarios() {

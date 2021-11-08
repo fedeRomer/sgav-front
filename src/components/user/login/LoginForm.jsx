@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import {Form, Button} from "react-bootstrap";
 import axios from 'axios';
 import Cookies from 'js-cookie'
 
 import "./Login.css";
 
-import { UserContext } from '../../../utils/UserContext';
 
 export default function Login(props) {
   const [username, setUsername] = useState("");

@@ -4,15 +4,15 @@ import Cookies from 'js-cookie'
 
 function Chat(){
 
-  const [username, setUsername] = useState(null)
+  // const [username, setUsername] = useState(null)
 
-	function createDirectChat(creds) {
-		getOrCreateChat(
-			creds,
-			{ is_direct_chat: true, usernames: [username] },
-			() => setUsername('')
-		)
-	}
+	// function createDirectChat(creds) {
+	// 	getOrCreateChat(
+	// 		creds,
+	// 		{ is_direct_chat: true, usernames: [username] },
+	// 		() => setUsername('')
+	// 	)
+	// }
 
 	// function renderChatForm(creds) {
 	// 	return (

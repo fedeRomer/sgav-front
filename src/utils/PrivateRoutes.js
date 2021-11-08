@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import {  getUserType} from './Common';
+import Spinner from 'react-bootstrap/Spinner'
 
 //private route con api para privilegios
 export default class PrivateRoutes extends Component {
@@ -56,7 +57,7 @@ export default class PrivateRoutes extends Component {
         const Component = this.props.component
         if (this.state.isLoading === true) {
             
-            return (<div>Cargando...</div>)
+            return (<div>Cargando...<Spinner animation="border" size="35"/></div>)
             
         }
         return(

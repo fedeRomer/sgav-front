@@ -1,12 +1,11 @@
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
+import * as DateFnsUtils from "date-fns"; 
 import {
   MuiPickersUtilsProvider,
-  DateTimePicker,
   KeyboardDatePicker
 } from "@material-ui/pickers";
 import React, { useState } from "react";
 
+//https://codesandbox.io/s/material-table-custom-filtercomponent-v40l5?file=/src/customDatePicker.js
 
 const CustomDatePicker = (props) => {
   const [date, setDate] = useState(new Date());

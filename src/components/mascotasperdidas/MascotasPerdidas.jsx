@@ -1,7 +1,5 @@
 //https://github.com/FaztWeb/react-cards-bootstrap/blob/main/src/components/Cards.js
-import React ,{useState, useEffect, Component, forwardRef } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import React ,{useState, useEffect} from 'react';
 import Card from "./Card";
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'

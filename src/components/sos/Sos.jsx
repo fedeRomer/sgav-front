@@ -1,7 +1,6 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState} from "react";
 import { styles } from './styles'
 import Button from 'react-bootstrap/Button'
-import MaterialTable from "material-table";
 
 import { getUser, getUserType } from "../../utils/Common";
 

@@ -51,9 +51,9 @@ export default function UnidadesFuncionales (){
       const [data, setData] = useState([])
       const columns = [
         { title: "ID", field: "id", editable: false },
-        { title: "Unidad Funcional", field: "numeroUf",type: "numeric" },
-        { title: "Dirección", field: "direccion" },
-        { title: "Telefono", field: 'telefono',type: "numeric" },
+        { title: "Unidad Funcional", field: "numeroUf",type: "numeric", validate: rowData => rowData.numeroUf > 0 && rowData.numeroUf < 9999},
+        { title: "Dirección", field: "direccion",initialEditValue:'', validate: rowData => rowData.direccion === '' ? { isValid: false, helperText: 'Direccion no puede ser vacio' } : true,},
+        { title: "Telefono", field: 'telefono',type: "numeric", validate: rowData => rowData.telefono > 1000000 },
         { title: "Detalle", field: "ubicacion"}
       ]
     

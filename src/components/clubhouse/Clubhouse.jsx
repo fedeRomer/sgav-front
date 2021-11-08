@@ -1,7 +1,4 @@
-import React, {useState, useEffect, Component, forwardRef } from "react";
-import ReactDOM from "react-dom";
-import axios from 'axios';
-import Cookies from 'js-cookie'
+import React, {useState, useEffect} from "react";
 import MaterialTable from "material-table";
 import CustomDatePicker from '../customdatepicker/CustomDatePicker';
 
@@ -48,7 +45,12 @@ export default function Clubhouse(){
         { title: "Propietario ID", field: "propietarioId",type: "numeric", validate: rowData => rowData.propietarioId > 0  },
         { title: "Fecha", field: "fecha",type:'datetime',validate: rowData => rowData.fecha > new Date(),filterComponent: (props) => <CustomDatePicker {...props} /> },
         { title: "Duracion hs", field: 'duracionhs',type: "numeric", validate: rowData => rowData.duracionhs > 0  },
-        { title: "Tipo", field: 'tipo',initialEditValue:'', validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'Tipo no puede ser vacio' } : true,}
+        {
+          title: 'Tipo',
+          field: 'tipo',
+          validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'El Tipo no puede ser vacio' } : true,
+          lookup: { 'Gimnasio': 'Gimnasio', 'Cancha de Futbol': 'Cancha de Futbol', 'Cancha de Tennis': 'Cancha de Tennis', 'Evento Especial': 'Evento Especial'},
+        },
       ]
     
     

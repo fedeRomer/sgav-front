@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component, forwardRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import MaterialTable from "material-table";
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
@@ -88,14 +88,14 @@ export default function AltaUser(props) {
                              onChange={handleChange}
                              />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="detalle.ControlInput1">
+            <Form.Group className="mb-3" controlId="username.ControlInput1">
               <Form.Label>Contraseña</Form.Label>
-              <Form.Control type="password" rows={3} placeholder="Contraseña" minlength="8" maxlength="20" name="password" required 
+              <Form.Control type="password" rows={3} placeholder="Contraseña" minLength="8" maxLength="20" name="password" required 
                              value={values.password}
                              onChange={handleChange}
                              />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="detalle.ControlInput1">
+            <Form.Group className="mb-3" controlId="password.ControlInput1">
               <Form.Label>ID usuario (Panel Usuario)</Form.Label>
               <Form.Control type="number" min="1"max="999999" rows={3} placeholder="ID usuario (Panel Usuario)" name="usuarioId" required 
                              value={values.usuarioId}

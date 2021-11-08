@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
@@ -62,7 +62,7 @@ function App() {
               <Nav.Link activeclassname="active" as={Link} to="/usuarios">Usuarios </Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/mascotasperdidas">Mascotas Perdidas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/chat">Chat</Nav.Link>
-              <Nav.Link activeclassname="active" as={Link} to="/reportesyestadisticas">Reportes y Estadisticas</Nav.Link>
+              <Nav.Link activeclassname="active" as={Link} to="/reportesyestadisticas">Reportes</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/clubhouse">Clubhouse</Nav.Link>
               <NavDropdown title="Notificaciones" id="navbarScrollingDropdown">
               <Nav.Link activeclassname="active" as={Link} to="/notificacionmulta" small style={{ color: 'black' }}>Notificaciones Multas</Nav.Link>

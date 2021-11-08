@@ -1,9 +1,7 @@
-import React ,{ useState, useEffect, Component, forwardRef } from 'react';
-import {Redirect } from 'react-router-dom';
+import React ,{ useState, useEffect} from 'react';
 import { removeUserCookie } from '../../../utils/Common';
 import Cookies from 'js-cookie';
 import MaterialTable from "material-table";
-import CustomDatePicker from '../../customdatepicker/CustomDatePicker';
  
 export default function Dashboard(props) {
   
@@ -55,8 +53,8 @@ export default function Dashboard(props) {
     {
       title: 'Sexo',
       field: 'sexo',
-      validate: rowData => rowData.rolId > 0,
-      lookup: { M: 'Masculino', F: 'Femenino'},
+      validate: rowData => rowData.sexo === '' ? { isValid: false, helperText: 'Sexo no puede ser vacio' } : true,
+      lookup: { 'M': 'Masculino', 'F': 'Femenino'},
     },
     //{ title: "Sexo", field: "sexo",initialEditValue:'', validate: rowData => rowData.sexo === '' ? { isValid: false, helperText: 'sexo no puede ser vacio' } : true,},
     { title: "DNI", field: 'dni',type: "numeric", validate: rowData => rowData.dni > 0 },

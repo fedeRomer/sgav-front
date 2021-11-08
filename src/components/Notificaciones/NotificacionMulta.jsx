@@ -1,7 +1,4 @@
-import React, {useState, useEffect, Component, forwardRef } from "react";
-import ReactDOM from "react-dom";
-import axios from 'axios';
-import Cookies from 'js-cookie'
+import React, {useState, useEffect} from "react";
 import MaterialTable from "material-table";
 
   
@@ -47,12 +44,17 @@ export default function NotificacionMulta() {
     const columns = [
       { title: "ID", field: "id", editable: false },
       { title: "Titulo", field: "titulo",initialEditValue:'', validate: rowData => rowData.titulo === '' ? { isValid: false, helperText: 'titulo no puede ser vacio' } : true,},
-      { title: "Tipo", field: "tipo",initialEditValue:'', validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'tipo no puede ser vacio' } : true,},
+      // { title: "Tipo", field: "tipo",initialEditValue:'', validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'tipo no puede ser vacio' } : true,},
+      {
+        title: 'Tipo',
+        field: 'tipo',
+        validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'Tipo no puede ser vacio' } : true,
+        lookup: { 'Vencimiento': 'Vencimiento', 'Nueva': 'Nueva', 'Info': 'Info'},
+      },
       { title: "Detalle", field: 'detalle' },
       { title: "Monto total", field: "montoTotal",type: "currency", validate: rowData => rowData.montoTotal >= 0   },
       { title: "Unidad Funcional", field: 'unidadFuncionalId', type: "numeric", validate: rowData => rowData.unidadFuncionalId > 0 },
-      { title: "Propietario ID", field: 'propietarioId',type: "numeric", validate: rowData => rowData.propietarioId > 0  },
-      { title: "Foto", field: 'foto' }
+      { title: "Propietario ID", field: 'propietarioId',type: "numeric", validate: rowData => rowData.propietarioId > 0  }      
     ]
   
   
