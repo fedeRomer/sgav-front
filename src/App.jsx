@@ -56,6 +56,8 @@ function App() {
               navbarScroll
             >
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
+              <img width="70px" height="auto" className="img-responsive" src={Logo}  alt="logo" />
+
               <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso sin token)</small> */}
               <Nav.Link activeclassname="active" as={Link} to="/visitas">Visitas</Nav.Link>
               <Nav.Link activeclassname="active" as={Link} to="/dashboard">Panel Usuario</Nav.Link> {/* <small style={{ color: 'red' }}>(Acceso con token unicamente)</small> */}

@@ -22,6 +22,7 @@ function ReportesYestadisticas() {
     const [dataGeneric, setDataGeneric] = useState([])
     
 
+    
     const columnsSos = [
         { title: "ID", field: "id", editable: false, hidden: true },
         { title: "Tipo", field: "tipo", editable: false },
@@ -184,7 +185,6 @@ function ReportesYestadisticas() {
                                 label="Fecha hasta"
                                 clearable
                                 minDate={fromDate}
-                                disableFuture='false'
                                 autoOk
                                 format="dd/MM/yyyy"
                                 value={toDate}
@@ -226,7 +226,36 @@ function ReportesYestadisticas() {
                         columns={columnsVisitas}
                         data={dataGeneric}
                         options={{
-                            exportButton: true
+                            exportButton: true,
+                            selection: true
+                        }}
+                        localization={{
+                            pagination: {
+                                labelDisplayedRows: '{from}-{to} of {count}'
+                            },
+                            pagination: {
+                                labelRowsSelect: 'Filas'
+                            },
+                            toolbar: {
+                                nRowsSelected: '{0} fila(s) seleccionadas',
+                                searchPlaceholder: 'Buscar',
+                                exportTitle: 'Exportar',
+                                exportName: 'Exportar como',
+                                exportAriaLabel: 'Exportar como'
+                            },
+                            header: {
+                                actions: 'Acciones'
+                            },
+                            body: {
+                                emptyDataSourceMessage: 'No hay registros para mostrar',
+                                filterRow: {
+                                    filterTooltip: 'Filtrar'
+                                },
+                                editRow: {
+                                    deleteText: '¿Está seguro de eliminar este registro?'  
+                                },
+                                addTooltip: 'Añadir'
+                            }
                         }}
                     />
                     <Sonnet />
@@ -240,7 +269,36 @@ function ReportesYestadisticas() {
                         columns={columnsVehiculoVisitas}
                         data={dataGeneric}
                         options={{
-                            exportButton: true
+                            exportButton: true,
+                            selection: true
+                        }}
+                        localization={{
+                            pagination: {
+                                labelDisplayedRows: '{from}-{to} of {count}'
+                            },
+                            pagination: {
+                                labelRowsSelect: 'Filas'
+                            },
+                            toolbar: {
+                                nRowsSelected: '{0} fila(s) seleccionadas',
+                                searchPlaceholder: 'Buscar',
+                                exportTitle: 'Exportar',
+                                exportName: 'Exportar como',
+                                exportAriaLabel: 'Exportar como'
+                            },
+                            header: {
+                                actions: 'Acciones'
+                            },
+                            body: {
+                                emptyDataSourceMessage: 'No hay registros para mostrar',
+                                filterRow: {
+                                    filterTooltip: 'Filtrar'
+                                },
+                                editRow: {
+                                    deleteText: '¿Está seguro de eliminar este registro?'  
+                                },
+                                addTooltip: 'Añadir'
+                            }
                         }}
                     />
                     <Sonnet />
@@ -253,7 +311,36 @@ function ReportesYestadisticas() {
                         columns={columnsMulta}
                         data={dataGeneric}
                         options={{
-                            exportButton: true
+                            exportButton: true,
+                            selection: true
+                        }}
+                        localization={{
+                            pagination: {
+                                labelDisplayedRows: '{from}-{to} of {count}'
+                            },
+                            pagination: {
+                                labelRowsSelect: 'Filas'
+                            },
+                            toolbar: {
+                                nRowsSelected: '{0} fila(s) seleccionadas',
+                                searchPlaceholder: 'Buscar',
+                                exportTitle: 'Exportar',
+                                exportName: 'Exportar como',
+                                exportAriaLabel: 'Exportar como'
+                            },
+                            header: {
+                                actions: 'Acciones'
+                            },
+                            body: {
+                                emptyDataSourceMessage: 'No hay registros para mostrar',
+                                filterRow: {
+                                    filterTooltip: 'Filtrar'
+                                },
+                                editRow: {
+                                    deleteText: '¿Está seguro de eliminar este registro?'  
+                                },
+                                addTooltip: 'Añadir'
+                            }
                         }}
                     />
                     <Sonnet />
@@ -266,7 +353,36 @@ function ReportesYestadisticas() {
                         columns={columnsExpensas}
                         data={dataGeneric}
                         options={{
-                            exportButton: true
+                            exportButton: true,
+                            selection: true
+                        }}
+                        localization={{
+                            pagination: {
+                                labelDisplayedRows: '{from}-{to} of {count}'
+                            },
+                            pagination: {
+                                labelRowsSelect: 'Filas'
+                            },
+                            toolbar: {
+                                nRowsSelected: '{0} fila(s) seleccionadas',
+                                searchPlaceholder: 'Buscar',
+                                exportTitle: 'Exportar',
+                                exportName: 'Exportar como',
+                                exportAriaLabel: 'Exportar como'
+                            },
+                            header: {
+                                actions: 'Acciones'
+                            },
+                            body: {
+                                emptyDataSourceMessage: 'No hay registros para mostrar',
+                                filterRow: {
+                                    filterTooltip: 'Filtrar'
+                                },
+                                editRow: {
+                                    deleteText: '¿Está seguro de eliminar este registro?'  
+                                },
+                                addTooltip: 'Añadir'
+                            }
                         }}
                     />
                     <Sonnet />
@@ -279,7 +395,36 @@ function ReportesYestadisticas() {
                         columns={columnsSos}
                         data={dataGeneric}
                         options={{
-                            exportButton: true
+                            exportButton: true,
+                            selection: true
+                        }}
+                        localization={{
+                            pagination: {
+                                labelDisplayedRows: '{from}-{to} of {count}'
+                            },
+                            pagination: {
+                                labelRowsSelect: 'Filas'
+                            },
+                            toolbar: {
+                                nRowsSelected: '{0} fila(s) seleccionadas',
+                                searchPlaceholder: 'Buscar',
+                                exportTitle: 'Exportar',
+                                exportName: 'Exportar como CSV',
+                                exportAriaLabel: 'Exportar como'
+                            },
+                            header: {
+                                actions: 'Acciones'
+                            },
+                            body: {
+                                emptyDataSourceMessage: 'No hay registros para mostrar',
+                                filterRow: {
+                                    filterTooltip: 'Filtrar'
+                                },
+                                editRow: {
+                                    deleteText: '¿Está seguro de eliminar este registro?'  
+                                },
+                                addTooltip: 'Añadir'
+                            }
                         }}
                     />
                     <Sonnet />
