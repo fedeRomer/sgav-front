@@ -133,21 +133,9 @@ function ReportesYestadisticas() {
 
     
     return (
-        <div>
+        <div >
             <h1>Reportes</h1>
-            {/* boton filtrar por fecha y boton filtrar por concepto 
-            modal para mostrar datepicker u otro filtro con dropdown
 
-            -> get all segun tab activa -> filtrar en front
-            filtro de fecha, convertir fecha a string y manejar con datepipe en angular buscar equivalente
-            */}
-            {/* boton para date picker  
-            
-            reporte multas por fechas desde hasta para montos -> monto total por mes y tipo
-            
-
-            reportes sos
-            */}
             <Row className="justify-content-md-center" md="auto">
                 <h2>Filtrar por Fecha</h2>
                 <Col md="auto">
@@ -157,7 +145,7 @@ function ReportesYestadisticas() {
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <KeyboardDatePicker
                                 variant="inline"
-                                label="Fecha desde"
+                                label="Fecha de Entrada"
                                 clearable='true'
                                 disableFuture='true'
                                 autoOk
@@ -166,7 +154,7 @@ function ReportesYestadisticas() {
                                 value={fromDate}
                                 onChange={(event) => {
                                     setFromDate(event);
-                                    console.log('fecha desde: ' + event)
+                                    console.log('fecha entrada: ' + event)
                                 }}
 
                             />
@@ -182,7 +170,7 @@ function ReportesYestadisticas() {
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <KeyboardDatePicker
                                 variant="inline"
-                                label="Fecha hasta"
+                                label="Fecha de Salida"
                                 clearable
                                 minDate={fromDate}
                                 autoOk
@@ -191,7 +179,7 @@ function ReportesYestadisticas() {
                                 onChange={setFromDate}
                                 onChange={(event) => {
                                     setToDate(event);
-                                    console.log('fecha hasta: ' + event)
+                                    console.log('fecha salida: ' + event)
                                 }}
                             />
                         </MuiPickersUtilsProvider>
@@ -220,6 +208,7 @@ function ReportesYestadisticas() {
                 <Tab eventKey='VISITAS' title="Visitas" >
 
                     <Button variant="primary" className="container d-flex justify-content-center align-items-center" onClick={() => getData('VISITAS')}> Buscar</Button>    
+                    <br/>
                     <MaterialTable
                     
                         title="Tabla de datos"

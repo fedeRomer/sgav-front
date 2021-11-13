@@ -19,7 +19,7 @@ export default function Login(props) {
 
 
   return (
-    <div className="Login">
+    <div className="Login" >
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -38,6 +38,7 @@ export default function Login(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <br/>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>

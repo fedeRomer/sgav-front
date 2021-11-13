@@ -15,8 +15,8 @@ const CustomDatePicker = (props) => {
       <KeyboardDatePicker
         variant="inline"
         label="Fecha"
-        clearable
-        disablePast
+        clearable='true'
+        disablePast='true'
         showTodayButton
         autoOk
         format="yyyy/MM/dd HH:mm"

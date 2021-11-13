@@ -165,7 +165,9 @@ export default function AltaUser(props) {
   return (
 
     <div className="PanelUsuarioABM">
+      <br/>
       <div className="container d-flex justify-content-center align-items-center h-100">
+        
     <Button variant="primary" onClick={() => setModalShow(true)}>
         Añadir Nuevo Usuario (login)
       </Button>

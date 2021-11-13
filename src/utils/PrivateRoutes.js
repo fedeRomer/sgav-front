@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import {  getUserType} from './Common';
 import Spinner from 'react-bootstrap/Spinner'
+import Cookies from 'js-cookie'
 
 //private route con api para privilegios
 export default class PrivateRoutes extends Component {
@@ -13,16 +14,21 @@ export default class PrivateRoutes extends Component {
         
         this.state = {
             hasAccess: false,
-            isLoading: true
+            isLoading: true,
+            checkedAcces:false
         }
         this.hasAccess = this.hasAccess.bind(this)
         this.hasAccess()
     }
 
     componentDidMount() {
+
         this.hasAccess()
     }
 
+  
+
+      
     hasAccess() {
 
         var checkAccessObj = new Object();
@@ -38,12 +44,14 @@ export default class PrivateRoutes extends Component {
             if(response.ok){
                 this.setState({
                     hasAccess: true,
-                    isLoading: false
+                    isLoading: false,
+                    checkedAcces: true
                 })
             } else {
                 this.setState({
                     hasAccess: false,
-                    isLoading: false
+                    isLoading: false,
+                    checkedAcces: true
                     
                 })
                 
@@ -57,7 +65,7 @@ export default class PrivateRoutes extends Component {
         const Component = this.props.component
         if (this.state.isLoading === true) {
             
-            return (<div>Cargando...<Spinner animation="border" size="35"/></div>)
+            return (<div>Cargando...<Spinner animation="border"  variant="primary" size="35"/></div>)
             
         }
         return(

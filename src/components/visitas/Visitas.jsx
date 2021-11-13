@@ -75,13 +75,13 @@ export default function Visitas(){
         { title: "ID", field: "id", editable: false },
         { title: "Nombre", field: "nombre",initialEditValue:'', validate: rowData => rowData.nombre === '' ? { isValid: false, helperText: 'nombre no puede ser vacio' } : true,},
         { title: "Apellido", field: "apellido",initialEditValue:'', validate: rowData => rowData.apellido === '' ? { isValid: false, helperText: 'apellido no puede ser vacio' } : true,},
-        { title: "Fecha de entrada", field: 'fechaEntrada',type:'datetime',validate: rowData => rowData.fechaEntrada > new Date(),filterComponent: (props) => <CustomDatePicker {...props} /> },
-        { title: "Fecha de salida", field: "fechaSalida",type:'datetime',validate: rowData => rowData.fechaSalida > rowData.fechaEntrada,filterComponent: (props) => <CustomDatePicker {...props} /> },
-        { title: "DNI", field: 'dni',type: "numeric",validate: rowData =>  rowData.dni > 1000000},
-        { title: "UF ID", field: 'unidadFuncionalId',type:'numeric', validate: rowData => rowData.unidadFuncionalId > 0  },
+        { title: "Fecha de entrada", field: 'fechaEntrada',type:'datetime',initialEditValue: new Date(),validate: rowData => rowData.fechaEntrada > new Date(),filterComponent: (props) => <CustomDatePicker {...props} /> },
+        { title: "Fecha de salida", field: "fechaSalida",type:'datetime',validate: rowData => rowData.fechaSalida >= rowData.fechaEntrada,filterComponent: (props) => <CustomDatePicker {...props} /> },
+        { title: "DNI", field: 'dni',type: "numeric",validate: rowData =>  rowData.dni > 1000000 && rowData.dni < 99999999},
+        { title: "UF ID", field: 'unidadFuncionalId',type:'numeric', validate: rowData => rowData.unidadFuncionalId > 0 && rowData.unidadFuncionalId < 10000 },
         {
           title: 'Tipo',
-          field: 'tipo',
+          field: 'tipo',initialEditValue:'Otro',
           validate: rowData => rowData.tipo === '' ? { isValid: false, helperText: 'Tipo no puede ser vacio' } : true,
           lookup: { 'Visita Domiciliaria': 'Visita Domiciliaria', 'Mantenimiento y Reparación': 'Mantenimiento y Reparación'
           , 'Construcción': 'Construcción', 'Servicios': 'Servicios', 'Otro': 'Otro'},
@@ -94,7 +94,7 @@ export default function Visitas(){
         { title: "ID", field: "id", editable: false },
         { title: "Patente", field: "patente",initialEditValue:'', validate: rowData => rowData.patente === '' ? { isValid: false, helperText: 'patente no puede ser vacio' } : true,},
         { title: "Fecha Vencimiento Poliza", field: "fechaVencimientoPoliza",type:'datetime',validate: rowData => rowData.fechaVencimientoPoliza > new Date(),helperText: 'No se pueden ingresar vehiculos con poliza vencida'  ,filterComponent: (props) => <CustomDatePicker {...props} />},
-        { title: "DNI", field: 'dniVisitanteOwner',type: "numeric", validate: rowData => rowData.dniVisitanteOwner > 1000000  },
+        { title: "DNI", field: 'dniVisitanteOwner',type: "numeric", validate: rowData => rowData.dniVisitanteOwner > 1000000  && rowData.dniVisitanteOwner < 99999999},
         { title: "ID Visitante", field: 'fkVisitanteOwner',type: "numeric", validate: rowData => rowData.fkVisitanteOwner > 0  }
       ]
 
@@ -152,6 +152,7 @@ export default function Visitas(){
                   refreshTable()
                 }).catch((error) =>{
                   console.log(error);
+                  refreshTable()
                 })
                 resolve()
               }, 500)}),

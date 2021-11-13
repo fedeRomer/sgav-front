@@ -186,13 +186,13 @@ function MyVerticallyCenteredModal(props) {
   return (
   <div>
 
-
+<br/>
     <div className="container d-flex justify-content-center align-items-center h-100">
 
     <Button variant="primary" onClick={() => setModalShow(true)}>
         Añadir Mascota Perdida
       </Button>
-
+      <br/>
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
