@@ -66,8 +66,8 @@ function Chat(){
       <div>
         <ChatEngine
           height='90vh'
-          userName='administracion'
-          userSecret='administracion2021'
+          userName='administracion@sgav.com'
+          userSecret='administracion@sgav.com'
           //projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
           projectID='4d2e52bd-b601-4bd3-a87e-4ffd0439b876'
         />
