@@ -38,7 +38,8 @@ function Chat(){
           height='90vh'
           userName={Cookies.get('user')}
           userSecret={Cookies.get('user')}
-          projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          //projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          projectID='4d2e52bd-b601-4bd3-a87e-4ffd0439b876'
         />
       </div>
 
@@ -52,7 +53,8 @@ function Chat(){
           height='90vh'
           userName='guardia'
           userSecret='guardia2021'
-          projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          //projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          projectID='4d2e52bd-b601-4bd3-a87e-4ffd0439b876'
         />
       </div>
 
@@ -66,7 +68,8 @@ function Chat(){
           height='90vh'
           userName='administracion'
           userSecret='administracion2021'
-          projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          //projectID='a06c1e27-cbea-40fb-b46e-57c7b4847949'
+          projectID='4d2e52bd-b601-4bd3-a87e-4ffd0439b876'
         />
       </div>
 

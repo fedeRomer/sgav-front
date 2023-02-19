@@ -65,7 +65,8 @@ export default function Login(props) {
       method: 'post',
       url: 'https://api.chatengine.io/users/',
       headers: {
-        'PRIVATE-KEY': '{{8de30907-db90-41bf-82ca-d2eccdfbec63}}'
+        //'PRIVATE-KEY': '{{8de30907-db90-41bf-82ca-d2eccdfbec63}}'
+        'PRIVATE-KEY': '{{2d2c9eae-770f-4c35-b320-a78e4f1e26c5}}'
       },
       data: JSON.stringify(dataobj)
     };
