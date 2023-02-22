@@ -41,9 +41,34 @@ import MaterialTable from "material-table";
     const [data, setData] = useState([])
     const columns = [
       { title: "ID", field: "id", editable: false },
-      { title: "unidadFuncionalId", field: "unidadFuncionalId",type: "numeric", validate: rowData => rowData.unidadFuncionalId > 0  },
-      { title: "usuarioId", field: "usuarioId",type: "numeric" }
-    ]
+      { 
+        title: "unidadFuncionalId", 
+        field: "unidadFuncionalId.id",
+        type: "numeric", 
+        validate: rowData => rowData.unidadFuncionalId && rowData.unidadFuncionalId.id > 0 ? true : "ID debe ser mayor que 0"
+      },
+      { 
+        title: "numeroUf", 
+        field: "unidadFuncionalId.numeroUf",
+        type: "numeric", 
+        validate: rowData => rowData.unidadFuncionalId && rowData.unidadFuncionalId.numeroUf > 0 ? true : "Unidad funcional debe ser mayor que 0"
+      },
+      { 
+        title: "usuarioId", 
+        field: "usuarioId.id",
+        type: "numeric", 
+        validate: rowData => rowData.usuarioId && rowData.usuarioId.id > 0 ? true : "ID usuario debe ser mayor que 0"
+      },
+      {
+        title: "Nombre",
+        field: "usuarioId.nombre",
+        validate: rowData => rowData.usuarioId && rowData.usuarioId.nombre ? true : "Nombre no puede ser vacio"
+      },
+      {
+        title: "Apellido",
+        field: "usuarioId.apellido",
+        validate: rowData => rowData.usuarioId && rowData.usuarioId.apellido ? true : "Apellido no puede ser vacio"
+      }    ]
   
   
     return (

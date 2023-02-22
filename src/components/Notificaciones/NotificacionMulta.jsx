@@ -53,7 +53,7 @@ export default function NotificacionMulta() {
       },
       { title: "Detalle", field: 'detalle' },
       { title: "Monto total", field: "montoTotal",type: "currency", validate: rowData => rowData.montoTotal >= 0   },
-      { title: "Unidad Funcional", field: 'unidadFuncionalId', type: "numeric", validate: rowData => rowData.unidadFuncionalId > 0 },
+      { title: "Unidad Funcional ID", field: 'unidadFuncionalId', type: "numeric", validate: rowData => rowData.unidadFuncionalId > 0 },
       { title: "Propietario ID", field: 'propietarioId',type: "numeric", validate: rowData => rowData.propietarioId > 0  }      
     ]
   
